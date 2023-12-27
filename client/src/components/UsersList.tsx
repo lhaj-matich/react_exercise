@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Spinner } from "@chakra-ui/react";
 
 import UserCard from "./UserCard";
 import PageButton from "./PageButton";
@@ -30,6 +30,8 @@ const UsersList = () => {
     });
   }, []);
 
+  if (users && users.length === 0)
+    return <Spinner boxSize={150} color="#fff" marginTop={250} />
   return (
     <>
       <Grid templateColumns="repeat(3, 1fr)" gap={4}>
